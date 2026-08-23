@@ -1,0 +1,22 @@
+@baseUrl = http://localhost:3000
+
+### RecadosControllerGetFindAll
+
+# @name RecadosControllerGetFindAll
+GET {{baseUrl}}/recados/
+
+### RecadosControllerGetFindOne
+
+# @name RecadosControllerGetFindOne
+GET {{baseUrl}}/recados/5
+
+### RecadosControllerPostCreate
+
+# @name RecadosControllerPostCreate
+POST {{baseUrl}}/recados/
+Content-Type: application/json
+
+{
+  "recado":"Este é o recado que estou enviado",
+  "nova chave": "outro valor"
+}
