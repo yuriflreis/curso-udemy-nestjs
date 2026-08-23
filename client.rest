@@ -4,6 +4,8 @@
 
 # @name RecadosControllerGetFindAll
 GET {{baseUrl}}/recados/
+?limit=10
+&offset=0
 
 ### RecadosControllerGetFindOne
 
@@ -20,3 +22,18 @@ Content-Type: application/json
   "recado":"Este é o recado que estou enviado",
   "nova chave": "outro valor"
 }
+
+### RecadosControllerPatchUpdate
+
+# @name RecadosControllerPatchUpdate
+PATCH {{baseUrl}}/recados/1
+Content-Type: application/json
+
+{
+  "recado":"Este é o recado que estou enviado"
+}
+
+### RecadosControllerDeleteRemove
+
+# @name RecadosControllerDeleteRemove
+DELETE {{baseUrl}}/recados/1
