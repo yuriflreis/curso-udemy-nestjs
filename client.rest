@@ -10,7 +10,7 @@ GET {{baseUrl}}/recados/
 ### RecadosControllerGetFindOne
 
 # @name RecadosControllerGetFindOne
-GET {{baseUrl}}/recados/5
+GET {{baseUrl}}/recados/2
 
 ### RecadosControllerPostCreate
 
@@ -18,22 +18,29 @@ GET {{baseUrl}}/recados/5
 POST {{baseUrl}}/recados/
 Content-Type: application/json
 
-{
-  "recado":"Este é o recado que estou enviado",
-  "nova chave": "outro valor"
-}
+  {
+    "texto": "Novo recado",
+    "de": "Joana",
+    "para": "João",
+    "lido": false,
+    "data": "2026-08-23T22:00:21.985Z"
+  }
 
 ### RecadosControllerPatchUpdate
 
 # @name RecadosControllerPatchUpdate
-PATCH {{baseUrl}}/recados/1
+PATCH {{baseUrl}}/recados/2
 Content-Type: application/json
 
-{
-  "recado":"Este é o recado que estou enviado"
-}
+  {
+    "texto": "atualiza recado",
+    "de": "Joana",
+    "para": "João",
+    "lido": false,
+    "data": "2026-08-23T22:00:21.985Z"
+  }
 
 ### RecadosControllerDeleteRemove
 
 # @name RecadosControllerDeleteRemove
-DELETE {{baseUrl}}/recados/1
+DELETE {{baseUrl}}/recados/2
