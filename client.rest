@@ -21,9 +21,7 @@ Content-Type: application/json
   {
     "texto": "Novo recado",
     "de": "Joana",
-    "para": "João",
-    "lido": false,
-    "data": "2026-08-23T22:00:21.985Z"
+    "para": "João Alberto"
   }
 
 ### RecadosControllerPatchUpdate
@@ -34,10 +32,7 @@ Content-Type: application/json
 
   {
     "texto": "atualiza recado",
-    "de": "Joana",
-    "para": "João",
-    "lido": false,
-    "data": "2026-08-23T22:00:21.985Z"
+    "lido": false
   }
 
 ### RecadosControllerDeleteRemove
