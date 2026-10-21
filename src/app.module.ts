@@ -5,6 +5,7 @@ import { RecadosModule } from './recados/recados.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PessoasModule } from './pessoas/pessoas.module';
 import { ConfigModule, ConfigType } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
 import appConfig from './app.config';
 
 @Module({
@@ -30,6 +31,7 @@ import appConfig from './app.config';
     }),
     RecadosModule,
     PessoasModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
