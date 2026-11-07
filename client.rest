@@ -1,4 +1,6 @@
 @baseUrl = http://localhost:3000
+@authToken = {{autenticate.response.body.accessToken}}
+@refreshToken = {{autenticate.response.body.refreshToken}}
 
 ### RecadosControllerGetFindAll
 
@@ -6,7 +8,7 @@
 GET {{baseUrl}}/recados/
 ?limit=10
 &offset=0
-
+Authorization: Bearer {{authToken}}
 ### RecadosControllerGetFindOne
 
 # @name RecadosControllerGetFindOne
@@ -39,3 +41,34 @@ Content-Type: application/json
 
 # @name RecadosControllerDeleteRemove
 DELETE {{baseUrl}}/recados/2
+
+# PESSOAS
+### Cria uma pessoa
+POST {{baseUrl}}/pessoas/
+Content-Type: application/json
+
+  {
+    "email": "teste@teste.com",
+    "password": "123456",
+    "name": "Teste"
+  }
+
+# AUTH
+### Autenticação
+# @name autenticate
+POST {{baseUrl}}/auth/
+Content-Type: application/json
+
+  {
+    "email": "teste@teste.com",
+    "password": "123456"
+  }
+  
+### Re-Autenticação
+# @name reAutenticate
+POST {{baseUrl}}/auth/refresh/
+Content-Type: application/json
+
+  {
+    "refreshToken": "{{refreshToken}}"
+  }

@@ -35,4 +35,7 @@ export class Pessoa {
 
   @OneToMany(() => RecadoEntity, (recado) => recado.para)
   recadosRecebidos: RecadoEntity[];
+
+  @Column({ default: true })
+  active: boolean;
 }
