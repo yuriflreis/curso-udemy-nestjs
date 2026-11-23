@@ -7,6 +7,11 @@ import {
   Param,
   Delete,
   UseGuards,
+  UseInterceptors,
+  UploadedFile,
+  MaxFileSizeValidator,
+  FileTypeValidator,
+  ParseFilePipe,
 } from '@nestjs/common';
 import { PessoasService } from './pessoas.service';
 import { CreatePessoaDto } from './dto/create-pessoa.dto';
@@ -14,6 +19,7 @@ import { UpdatePessoaDto } from './dto/update-pessoa.dto';
 import { AuthTokenGuard } from 'src/auth/guards/auth-token.guard';
 import { TokenPayloadParam } from 'src/auth/params/token-payload.param';
 import { tokenPayloadDto } from 'src/auth/dto/token-payload.dto';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('pessoas')
 export class PessoasController {
@@ -53,5 +59,23 @@ export class PessoasController {
     @TokenPayloadParam() tokenPayload: tokenPayloadDto,
   ) {
     return this.pessoasService.remove(+id, tokenPayload);
+  }
+
+  @UseGuards(AuthTokenGuard)
+  @UseInterceptors(FileInterceptor('file'))
+  @Post('upload-picture')
+  async uploadPicture(
+    @UploadedFile(
+      new ParseFilePipe({
+        validators: [
+          new MaxFileSizeValidator({ maxSize: 10 * (1024 * 1024) }),
+          new FileTypeValidator({ fileType: 'image/png' }),
+        ],
+      }),
+    )
+    file: Express.Multer.File,
+    @TokenPayloadParam() tokenPayload: tokenPayloadDto,
+  ) {
+    return this.pessoasService.uploadPicture(file, tokenPayload);
   }
 }
